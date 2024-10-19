@@ -25,6 +25,10 @@ function createTodo() {
     listTodos();
   });
 }
+  
+function deleteTodo(id: string) {
+    client.models.Todo.delete({ id })
+  }
     
 // fetch todos when the component is mounted
  onMounted(() => {
@@ -40,6 +44,7 @@ function createTodo() {
     <ul>
       <li 
         v-for="todo in todos" 
+        @click="deleteTodo(todo.id)"
         :key="todo.id">
         {{ todo.content }}
       </li>
